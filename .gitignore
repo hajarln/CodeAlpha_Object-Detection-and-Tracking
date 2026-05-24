@@ -1,0 +1,13 @@
+# Modèles YOLO (trop lourds)
+*.pt
+
+# Fichiers vidéos
+*.mp4
+*.avi
+*.mov
+
+# Environnement virtuel 
+venv/
+.venv/
+__pycache__/
+.streamlit/
