@@ -10,89 +10,123 @@ st.set_page_config(
     page_icon="📊"
 )
 
+# Injection CSS : Ajustements précis des couleurs
 st.markdown("""
     <style>
-    /* Application background */
     .stApp {
-        background-color: #0d1117;
-        color: #ffffff;
+        background: linear-gradient(135deg, #fdf6f0 0%, #f5efff 100%);
+        color: #3a3a4f;
     }
     
-    /* Hide the small sidebar collapse button */
     [data-testid="collapsedControl"] {
         display: none !important;
     }
     
-    /* VIDEO FIX: Forces the image never to exceed the screen height and remain fully visible */
     [data-testid="stImage"] img {
         max-height: 450px !important;
         width: auto !important;
         object-fit: contain !important;
-        border-radius: 10px;
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+        border-radius: 16px;
+        box-shadow: 0px 10px 30px rgba(180, 160, 180, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.6);
     }
     
-    /* Main Title */
     h1 {
-        color: #ff4da6 !important;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-weight: 700;
-        text-shadow: 0px 0px 10px rgba(255, 77, 166, 0.3);
+        color: #000000 !important;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        font-weight: 800;
         margin-bottom: 5px;
     }
     
-    /* Sidebar */
-    [data-testid="stSidebar"] {
-        background-color: #161b22 !important;
-        border-right: 2px solid #ff4da6;
+    h3 {
+        color: #5c5470 !important;
+        font-weight: 700 !important;
     }
+    
+    /* Barre latérale (Sidebar) - Tons Lilas/Gris doux & Bordure Verte Amande */
+    [data-testid="stSidebar"] {
+        background-color: #f7f3f9 !important;
+        border-right: 3px solid #f6a192;
+    }
+    
     [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h1, [data-testid="stSidebar"] p, [data-testid="stSidebar"] label {
-        color: #4da6ff !important;
+        color: #5c5470 !important;
         font-weight: 600;
     }
     
-    /* User Guide Box Style */
     .instructions-box {
-        background-color: #1f242c;
-        border-left: 5px solid #4da6ff;
-        padding: 12px;
-        border-radius: 8px;
-        margin-bottom: 15px;
-        box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+        background-color: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(5px);
+        border-left: 5px solid #f6a192; /* Orange clair */
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        box-shadow: 0px 4px 15px rgba(220, 200, 200, 0.1);
     }
     .instructions-title {
-        color: #4da6ff !important;
+        color: #e07a5f !important;
         font-weight: bold;
         font-size: 1.05rem;
-        margin-bottom: 3px;
+        margin-bottom: 4px;
     }
     .instructions-text {
-        color: #e2e8f0 !important;
-        font-size: 0.9rem;
+        color: #6c5b7b !important;
+        font-size: 0.95rem;
         line-height: 1.4;
     }
 
-    /* Metric Boxes */
     [data-testid="stMetricValue"] {
-        color: #ff4da6 !important;
-        font-size: 2.2rem !important;
-        font-weight: bold;
+        color: #000000 !important; /* Chiffres (0) passés en noir */
+        font-size: 2.4rem !important;
+        font-weight: 800;
     }
     [data-testid="stMetricLabel"] {
-        color: #4da6ff !important;
+        color: #7d84b2 !important;
         font-size: 0.95rem !important;
+        font-weight: 600 !important;
     }
     [data-testid="stMetric"] {
-        background-color: #1f242c;
-        padding: 12px;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 16px;
+        border-radius: 16px;
+        border-left: 5px solid #f6a192;
+        border-top: 1px solid rgba(255, 255, 255, 0.5);
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0px 6px 20px rgba(180, 160, 180, 0.1);
+    }
+    
+    .stMultiSelect div[data-baseweb="select"] {
+        background-color: white !important;
         border-radius: 10px;
-        border-left: 4px solid #ff4da6;
-        box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    }
+    span[data-baseweb="tag"] {
+        background-color: #f6a192 !important; /* Même orange clair que le guide */
+        color: white !important;
+        border-radius: 6px !important;
+    }
+    span[data-baseweb="tag"] role[button], span[data-baseweb="tag"] svg {
+        fill: white !important;
+        color: white !important;
+    }
+    
+    
+    div[data-testid="stSlider"] div[role="slider"] {
+        background-color: #f6a192 !important; /* Bulle du slider */
+        border-color: #f6a192 !important;
+    }
+    [data-testid="stSidebar"] h2 {
+        color: #f6a192 !important;
+        font-weight: 700 !important;
+    }
+   [data-testid="stSidebar"] h1, [data-testid="stSidebar"] p, [data-testid="stSidebar"] label {
+        color: #5c5470 !important;
+        font-weight: 600;
     }
     </style>
 """, unsafe_allow_html=True)
 
-st.title("📊 Web Application for Object Detection & Tracking")
+st.title(" Web Application for Object Detection & Tracking")
 
 st.sidebar.header("⚙️ Project Settings")
 
@@ -149,6 +183,7 @@ with col2:
     st.write("### 📈 Statistics")
     st.write("")
     stat_unique_objects = st.empty()
+    st.write("")
     st.write("")
     stat_current_objects = st.empty()
 
